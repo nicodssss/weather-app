@@ -8,7 +8,4 @@ const container = document.getElementById('root');
 const root = ReactDOMClient.createRoot(container);
 
 // Initial render: Render an element to the root.
-root.render(<App tab="home" />);
-
-// During an update, there's no need to pass the container again.
-root.render(<App tab="profile" />);
+root.render(<App/>);
