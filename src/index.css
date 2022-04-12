@@ -44,6 +44,16 @@
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
     padding: 25px;
   }
+  main h2{
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 10px;
+  }
+
   
     /* search bar  move */ 
   .search-box {

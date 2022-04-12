@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaCloud} from 'react-icons/fa'
 // Instance sv variables to get a better access.
 const server = {
   url: 'https://api.openweathermap.org/data/2.5/',
@@ -51,6 +51,7 @@ function App() {
   return (
     <div className={(typeof weather.weather !== "undefined") ? weather.weather[0].main.toLowerCase() : "app"}>
       <main>
+        <h2>Weather App <FaCloud/></h2>
         <div className="search-box">
           <input 
             type="text"
