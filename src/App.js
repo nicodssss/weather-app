@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCloudMoonRain } from 'react-icons/fa'
 // Instance sv variables to get a better access.
 const server = {
   url: 'https://api.openweathermap.org/data/2.5/',
@@ -6,11 +7,12 @@ const server = {
 }
 
 
+
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const getWeather = (evt) => {
-    if (evt.key === "Enter") { // If the user hits the enter key on their keyboard
+    
       fetch(`${server.url}weather?q=${query}&units=metric&APPID=${server.api_key}`)
         .then(res => res.json())
         .then(result => {
@@ -19,7 +21,6 @@ function App() {
           console.log(result);
         })
         
-    }
   }
   // dateBuilder returns an String => 'Monday 11 April 2022'
   const dateBuilder = (d) => {
@@ -45,8 +46,9 @@ function App() {
             placeholder="Search..."
             onChange={e => setQuery(e.target.value)}
             value={query}
-            onKeyPress={getWeather}
           />
+          <button onClick={getWeather}><FaCloudMoonRain/></button>
+          
         </div>
         {(typeof weather.main != "undefined") ? (
         <div>
