@@ -20,9 +20,11 @@ function App() {
           if(result.cod === "404"){
             setErr(result.message)
             setQuery('');
+            setWeather({});
           } else if(result.cod === "400"){
             setErr(result.message)
             setQuery('');
+            setWeather({});
           }else{
           setWeather(result);
           setQuery('');
