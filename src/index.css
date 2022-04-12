@@ -1,18 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Waiting for the Sunrise', cursive;
   }
   
   body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Waiting for the Sunrise', cursive;
   }
   
   .app {
-    background-color: #313131;
+    background-image: url('./assets/bg-img.gif');
     background-size: cover;
     background-position: bottom;
-    transition: 0.4 ease;
+    transition: 0.4 ease; 
+  }
+
+  .clear {
+    background-image: url('./assets/sunny.jpg');
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease; 
+  }
+
+  .rain {
+    background-image: url('./assets/raining.jpg');
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease; 
+  }
+
+  .clouds {
+    background-image: url('./assets/cloudly.jpg');
+    background-size: cover;
+    background-position: bottom;
+    transition: 0.4 ease; 
   }
     
   main {
@@ -23,21 +47,31 @@
   
     /* search bar  move */ 
   .search-box {
-    width: 50%;
+    width: 100%;
+    height: 5vh;
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
   }
   .search-box button {
     padding: 10px;
     margin-left: 10px;
-    border-radius: 10px;
+    border: none;
+    width: 12%;
+    border-radius: 16px 16px 16px 16px;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
   }
+  .search-box button:hover {
+
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+  
   
   /* search bar */ 
   .search-box .search-bar {
     display: flex;
-    width: 100%;
+    width: 50%;
     padding: 15px;
   
     appearance: none;
@@ -53,6 +87,7 @@
     
     color: #313131;
     font-size: 20px;
+    font-weight: 900;
   
     transition: 0.4s ease;
   }
@@ -77,7 +112,14 @@
     text-align: center;
     text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
   }
-  
+  .location-box .location-not-found {
+    margin-top: 40px;
+    color: #FFF;
+    font-size: 64px;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  }
   .weather-box {
     text-align: center;
   }
@@ -99,14 +141,6 @@
     text-align: center;
     box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
   }
-  
-  .weather-box .weather {
-    color: #FFF;
-    font-size: 48px;
-    font-weight: 700;
-    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
-  }
-
   .weather img {
     height: 200px;
   }

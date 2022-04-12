@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCloudMoonRain } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 // Instance sv variables to get a better access.
 const server = {
   url: 'https://api.openweathermap.org/data/2.5/',
@@ -11,14 +11,24 @@ const server = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [err,setErr] = useState('')
   const getWeather = (evt) => {
     
       fetch(`${server.url}weather?q=${query}&units=metric&APPID=${server.api_key}`)
         .then(res => res.json())
         .then(result => {
+          if(result.cod === "404"){
+            setErr(result.message)
+            setQuery('');
+          } else if(result.cod === "400"){
+            setErr(result.message)
+            setQuery('');
+          }else{
           setWeather(result);
           setQuery('');
-          console.log(result);
+          setErr('')
+          console.log(result)
+          }
         })
         
   }
@@ -37,7 +47,7 @@ function App() {
   
 
   return (
-    <div className='app'>
+    <div className={(typeof weather.weather !== "undefined") ? weather.weather[0].main.toLowerCase() : "app"}>
       <main>
         <div className="search-box">
           <input 
@@ -47,7 +57,7 @@ function App() {
             onChange={e => setQuery(e.target.value)}
             value={query}
           />
-          <button onClick={getWeather}><FaCloudMoonRain/></button>
+          <button onClick={getWeather}><FaSearch/></button>
           
         </div>
         {(typeof weather.main != "undefined") ? (
@@ -60,12 +70,15 @@ function App() {
             <div className="temp">
               {Math.round(weather.main.temp)}°c
             </div>
-            <div className="weather">
-              <img id="wicon" src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="Weather icon" />
-            </div>
           </div>
         </div>
         ) : ('')}
+        {
+          err ? (<div className="location-box">
+          <div className="location-not-found">{err}</div>
+          </div>)
+          : ('')
+        }
       </main>
     </div>
   );
